@@ -4,7 +4,7 @@ set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
 APP="$1"; IMAGE="dokku/$APP"; APP_PATH="$DOKKU_ROOT/$APP"
 
 # Ensure the .dokku-git-rev file actually exists
-[[ ! -f "$APP_PATH/.dokku-git-rev" ]] exit 0
+[ ! -f "$APP_PATH/.dokku-git-rev" ] && exit 0
 
 # Grab the REV
 GIT_REV=$(cat "$APP_PATH/.dokku-git-rev" | tail -1)
