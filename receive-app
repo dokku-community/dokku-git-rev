@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
+
+APP="$1"; REV=$2; APP_PATH="$DOKKU_ROOT/$APP"
+
+if [[ !-d "$APP_PATH" ]]; then
+	mkdir -p "$APP_PATH"
+	echo $REV > "$APP_PATH/.head"
+fi
