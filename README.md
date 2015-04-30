@@ -1,3 +1,17 @@
+# **** NO LONGER MAINTAINED ****
+
+Use [cjblomqvist/dokku-git-rev](https://github.com/cjblomqvist/dokku-git-rev) instead.
+
+.
+
+.
+
+.
+
+.
+
+.
+
 # `git rev-parse HEAD` in dokku env
 
 Lets you fetch the git revision hash used to build the app from the `GIT_REV`
