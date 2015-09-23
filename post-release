@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
 
-APP="$1"; IMAGE="dokku/$APP"; APP_PATH="$DOKKU_ROOT/$APP"
+APP="$1"; IMAGE="dokku/$APP"
 
 # Ensure the .dokku-git-rev file actually exists
-[ ! -f "$APP_PATH/.dokku-git-rev" ] && exit 0
+[[ ! -f "$DOKKU_ROOT/$APP/.dokku-git-rev" ]] && exit 0
 
 # Grab the REV
-GIT_REV=$(cat "$APP_PATH/.dokku-git-rev" | tail -1)
+GIT_REV=$(tail -1 "$DOKKU_ROOT/$APP/.dokku-git-rev")
 
 # Cleanup
-rm "$APP_PATH/.dokku-git-rev"
+rm "$DOKKU_ROOT/$APP/.dokku-git-rev"
 
 # Push the GIT_REV to the docker image
 id=$(echo "export GIT_REV=$GIT_REV" | docker run -i -a stdin $IMAGE /bin/bash -c "cat > /app/.profile.d/git_rev.sh")
