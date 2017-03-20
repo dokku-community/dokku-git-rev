@@ -13,23 +13,21 @@ Lets you fetch the git revision hash used to build the app from the `GIT_REV`
 # on 0.3.x
 cd /var/lib/dokku/plugins
 git clone https://github.com/cjblomqvist/dokku-git-rev.git dokku-git-rev
-dokku plugins-install
+--name dokku plugins-install
 
 # on 0.4.x
-dokku plugin:install https://github.com/cjblomqvist/dokku-git-rev.git dokku-git-rev
+dokku plugin:install https://github.com/cjblomqvist/dokku-git-rev.git --name dokku-git-rev
 ```
 
 ## hooks
 
 This plugin provides hooks:
 
-* `post-release-buildpack`: adds the `GIT_REV` env var
-* `post-release-dockerfile`: adds the `GIT_REV` env var
 * `receive-app`: captures the current `GIT_REV`
 
 ## usage
 
-On git deploys, the `GIT_REV` environment variable will be set in `/app/.profile.d/git_rev.sh` and be available for your usage.
+On git deploys, the `GIT_REV` environment variable will be set for your application and be available for your usage.
 
 ## thanks
 

@@ -1,17 +1,14 @@
 #!/usr/bin/env bash
 set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
+source "$PLUGIN_AVAILABLE_PATH/config/functions"
 
-APP="$1"; REV=$2
+main() {
+  declare APP="$1" REV="$2"
 
-# Don't write the revision if there is no git repository.
-if [[ ! -d "$DOKKU_ROOT/$APP/refs" ]]; then
-  true
-else
-  # Ensure there's a directory for the app
-  if [[ ! -d "$DOKKU_ROOT/$APP" ]]; then
-    mkdir -p "$DOKKU_ROOT/$APP"
+  # Don't write the revision if there is no git repository.
+  if [[ -d "$DOKKU_ROOT/$APP/refs" ]]; then
+    config_set --no-restart "$APP" GIT_REV="$REV"
   fi
+}
 
-  # Save the REV to a file called .dokku-git-rev to
-  echo $REV > "$DOKKU_ROOT/$APP/.dokku-git-rev"
-fi
+main "$@"
