@@ -23,13 +23,11 @@ dokku plugin:install https://github.com/cjblomqvist/dokku-git-rev.git --name dok
 
 This plugin provides hooks:
 
-* `post-release-buildpack`: adds the `GIT_REV` env var
-* `post-release-dockerfile`: adds the `GIT_REV` env var
 * `receive-app`: captures the current `GIT_REV`
 
 ## usage
 
-On git deploys, the `GIT_REV` environment variable will be set in `/app/.profile.d/git_rev.sh` and be available for your usage.
+On git deploys, the `GIT_REV` environment variable will be set for your application and be available for your usage.
 
 ## thanks
 
