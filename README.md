@@ -13,9 +13,9 @@ Lets you fetch the git revision hash used to build the app from the `GIT_REV`
 # on 0.3.x
 cd /var/lib/dokku/plugins
 git clone https://github.com/cjblomqvist/dokku-git-rev.git dokku-git-rev
---name dokku plugins-install
+dokku plugins-install
 
-# on 0.4.x
+# on 0.4.x+
 dokku plugin:install https://github.com/cjblomqvist/dokku-git-rev.git --name dokku-git-rev
 ```
 
