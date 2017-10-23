@@ -5,8 +5,8 @@ source "$PLUGIN_AVAILABLE_PATH/config/functions"
 main() {
   declare APP="$1" REV="$2"
 
-  # Don't write the revision if there is no git repository.
-  if [[ -d "$DOKKU_ROOT/$APP/refs" ]]; then
+  # Don't write the revision if there is no git repository or we have no incoming REV.
+  if [[ -d "$DOKKU_ROOT/$APP/refs" ]] && [[ -n "$REV" ]]; then
     config_set --no-restart "$APP" GIT_REV="$REV"
   fi
 }
