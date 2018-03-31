@@ -1,4 +1,4 @@
 [plugin]
 description = "adds the current git hash as an environment variable"
-version = "1.1.0"
+version = "1.1.1"
 [plugin.config]
