@@ -4,7 +4,7 @@ source "$PLUGIN_AVAILABLE_PATH/config/functions"
 
 fn-git-rev-pre-receive-app() {
   # shellcheck disable=SC2034
-  declare APP="$1" IMAGE_SOURCE_TYPE="$2" TMP_WORK_DIR="$3" REV="$2"
+  declare APP="$1" IMAGE_SOURCE_TYPE="$2" TMP_WORK_DIR="$3" REV="$4"
 
   # Don't write the revision if there is no git repository or we have no incoming REV.
   if [[ -d "$DOKKU_ROOT/$APP/refs" ]] && [[ -n "$REV" ]]; then
